@@ -11,6 +11,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "2048"
-   end
+  end
+
+  # install docker
+  config.vm.provision "docker" do |docker|
+  end
 
 end
