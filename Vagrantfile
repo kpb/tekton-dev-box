@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
 
   # vbguest plugin config
   config.vbguest.installer_options = { allow_kernel_upgrade: true }
-
+  
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "2048"
   end
@@ -17,4 +17,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "docker" do |docker|
   end
 
+  # run install scripts
+  config.vm.provision "shell", path: "install-kind.sh"
+  # TODO kubectl, tekton, ...
+  
 end
