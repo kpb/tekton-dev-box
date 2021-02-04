@@ -19,6 +19,7 @@ Vagrant.configure("2") do |config|
 
   # run install scripts
   config.vm.provision "shell", path: "install-kind.sh"
+  config.vm.provision "shell", path: "install-kubectl.sh"
   # TODO kubectl, tekton, ...
   
 end
