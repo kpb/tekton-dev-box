@@ -4,22 +4,31 @@
 Vagrant.configure("2") do |config|
 
   config.vm.box = "centos/8"
-  config.vm.synced_folder ".", "/vagrant"
+#  config.vm.synced_folder ".", "/vagrant"
 
   # vbguest plugin config
   config.vbguest.installer_options = { allow_kernel_upgrade: true }
   
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = "2048"
+    vb.memory = "4096"
   end
 
   # install docker
   config.vm.provision "docker" do |docker|
   end
 
+  # basic set up
+  $setup = <<-SCRIPT
+  mkdir -p /home/vagrant/bin
+  chown vagrant:vagrant /home/vagrant/bin
+  SCRIPT
+
+  config.vm.provision "shell", inline: $setup
+  
   # run install scripts
   config.vm.provision "shell", path: "install-kind.sh"
   config.vm.provision "shell", path: "install-kubectl.sh"
-  # TODO kubectl, tekton, ...
+  config.vm.provision "shell", path: "install-tekton.sh"
+
   
 end
