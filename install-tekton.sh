@@ -19,15 +19,15 @@ do
 done
 
 # Install tekton cli
-curl -Lo tkn.tar.gz https://github.com/tektoncd/cli/releases/download/v0.15.0/tkn_0.15.0_Darwin_x86_64.tar.gz
+curl -Lo tkn.tar.gz https://github.com/tektoncd/cli/releases/download/v0.16.0/tkn_0.16.0_Linux_x86_64.tar.gz
 tar zxvf tkn.tar.gz -C ./bin tkn
 rm tkn.tar.gz
 chown vagrant:vagrant ./bin/tkn
 chmod 755 ./bin/tkn
 
 # Configure pvc
-kubectl create configmap config-artifact-pvc \
+$kubectl_cmd create configmap config-artifact-pvc \
         --from-literal=size=10Gi \
         --from-literal=storageClassName=manual \
         -o yaml -n tekton-pipelines \
-        --dry-run=client | kubectl replace -f -
+        --dry-run=client | $kubectl_cmd replace -f -
