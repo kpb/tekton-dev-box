@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
 
   config.vm.box = "centos/8"
-#  config.vm.synced_folder ".", "/vagrant"
+  config.vm.synced_folder ".", "/vagrant"
 
   # vbguest plugin config
   config.vbguest.installer_options = { allow_kernel_upgrade: true }
@@ -26,9 +26,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: $setup
   
   # run install scripts
-  config.vm.provision "shell", path: "install-kind.sh"
-  config.vm.provision "shell", path: "install-kubectl.sh"
-  config.vm.provision "shell", path: "install-tekton.sh"
+  config.vm.provision "shell", path: "install-kind.sh", privileged: false
+  config.vm.provision "shell", path: "install-kubectl.sh", privileged: false
+  config.vm.provision "shell", path: "install-tekton.sh", privileged: false
 
   
 end

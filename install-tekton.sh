@@ -22,7 +22,6 @@ done
 curl -Lo tkn.tar.gz https://github.com/tektoncd/cli/releases/download/v0.16.0/tkn_0.16.0_Linux_x86_64.tar.gz
 tar zxvf tkn.tar.gz -C ./bin tkn
 rm tkn.tar.gz
-chown vagrant:vagrant ./bin/tkn
 chmod 755 ./bin/tkn
 
 # Configure pvc
