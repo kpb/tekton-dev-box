@@ -1,4 +1,4 @@
-# Centos 8 Tekton Development Box
+# CentOS 8 Tekton Development Box
 
 ## What is this?
 
@@ -30,10 +30,15 @@ $ vagrant up
 
 ```bash
 $ kubectl apply -f task-hello.yaml
-$ tkn task start hello && tkn taskrun logs --last -f 
+$ tkn task start hello && tkn taskrun logs --last -f
 ```
 
+### What else is here?
 
+The `adr` directory contains so-called [Architecture Decision Records][adr] documenting why the project is put together
+the way it is.
+
+Hope you find this useful!
 
 
 <!-- refs -->
@@ -45,3 +50,5 @@ $ tkn task start hello && tkn taskrun logs --last -f
 [vagrant]: https://www.vagrantup.com/ "Vagrant Homepage"
 [vbguest]: https://github.com/dotless-de/vagrant-vbguest "vbguest github page"
 [virtbox]: https://www.virtualbox.org/ "Virtual Box Homepage"
+
+[adr]: https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions "adder's"
