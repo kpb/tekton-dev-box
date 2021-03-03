@@ -1,9 +1,9 @@
-# CentOS 8 Tekton Development Box
+# Ubuntu Tekton Development Box
 
 ## What is this?
 
 A [Vagrant][vagrant] box for [Tekton][tekton] pipeline development, exploration, and demoing. Built on
-[CentOS][centos] 8. Uses [KinD][kind] to create a [Kubernetes][k8s] cluster and installs [Tekton][tekton].
+[Ubuntu][ubuntu] 20.04. Uses [KinD][kind] to create a [Kubernetes][k8s] cluster and installs [Tekton][tekton].
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ Hope you find this useful! Peace.
 <!-- refs -->
 
 [adr]: https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions "adder's"
-[centos]: https://www.centos.org/ "CentOS homepage"
+[ubuntu]: https://ubuntu.com/
 [k8s]: https://kubernetes.io "K8s Homepage"
 [kind]: https://kind.sigs.k8s.io/ "KinD Homepage"
 [tekton]: https://tekton.dev "Tekton Homepage"
