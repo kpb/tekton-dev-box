@@ -7,16 +7,12 @@ vagrant_bin=/home/vagrant/bin
 kind_cmd=${vagrant_bin}/kind
 kubectl_cmd=${vagrant_bin}/kubectl
 
-$kind_cmd create cluster
+$kind_cmd create cluster --wait 10m
 
 $kubectl_cmd apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
 
-echo "Waiting for tekton-pipelines-controller pod to be available..."
-until $kubectl_cmd wait --namespace tekton-pipelines --timeout=-1s --for=condition=Ready --selector app=tekton-pipelines-controller pod
-do
-    echo "...still waiting"
-    sleep 3
-done
+echo "Waiting for tekton-pipelines pods to be available"
+$kubectl_cmd wait --namespace tekton-pipelines --timeout=-30s --for=condition=Ready pods --all
 
 # Install tekton cli
 curl -Lo tkn.tar.gz https://github.com/tektoncd/cli/releases/download/v0.16.0/tkn_0.16.0_Linux_x86_64.tar.gz
