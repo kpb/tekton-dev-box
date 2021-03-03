@@ -28,9 +28,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: $setup
   
   # run install scripts
-  config.vm.provision "shell", path: "install-kind.sh", privileged: false
-  config.vm.provision "shell", path: "install-kubectl.sh", privileged: false
-  config.vm.provision "shell", path: "install-tekton.sh", privileged: false
+  config.vm.provision "shell", path: "provision/install-kind.sh", privileged: false
+  config.vm.provision "shell", path: "provision/install-kubectl.sh", privileged: false
+  config.vm.provision "shell", path: "provision/install-tekton.sh", privileged: false
 
   
 end
