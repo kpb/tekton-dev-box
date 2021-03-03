@@ -4,10 +4,7 @@
 set -e
 
 vagrant_bin=/home/vagrant/bin
-kind_cmd=${vagrant_bin}/kind
 kubectl_cmd=${vagrant_bin}/kubectl
-
-$kind_cmd create cluster --wait 10m
 
 $kubectl_cmd apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
 
