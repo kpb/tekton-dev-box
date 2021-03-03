@@ -3,11 +3,13 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "centos/8"
-  config.vm.synced_folder ".", "/vagrant"
+  config.vm.box = "ubuntu/focal64"
 
   # vbguest plugin config
-  config.vbguest.installer_options = { allow_kernel_upgrade: true }
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    # set to false to disable vbguest from updating guest additions
+    config.vbguest.auto_update = true
+  end
   
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "4096"
