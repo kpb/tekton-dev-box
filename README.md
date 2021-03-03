@@ -9,6 +9,8 @@ A [Vagrant][vagrant] box for [Tekton][tekton] pipeline development, exploration,
 
 - [Vagrant][vagrant]. Currently using version 2.2.14
 - [VirtualBox][virtbox] 6.1
+
+### Nice to have
 - [Vagrant][vagrant] [vagrant-vbguest][vbguest] plugin
 
 ### Running
@@ -33,6 +35,30 @@ $ kubectl apply -f task-hello.yaml
 $ tkn task start hello && tkn taskrun logs --last -f
 ```
 
+#### Increase number of KinD nodes
+
+If you'd like to have additional [KinD][kind] nodes, you can edit the `provision/create-kind-cluster.sh` file and
+uncomment the `#- role: worker` line(s).
+
+#### NGINX Ingress
+
+The [KinD][kind] cluster is configured to use [NGINX Ingress][nginx-ingress], which you might want to use in developing
+a pipeline. You can try it out with an example provided by KinD (see [KinD Using Ingress][kind-ingress]).
+
+```bash
+$ kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/usage.yaml
+```
+
+Verify ingress works
+
+```bash
+$ curl localhost/foo
+foo
+$ curl localhost/bar
+bar
+```
+
+
 ### What else is here?
 
 The `adr` directory contains so-called [Architecture Decision Records][adr] documenting why the project is put together
@@ -44,10 +70,12 @@ Hope you find this useful! Peace.
 <!-- refs -->
 
 [adr]: https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions "adder's"
-[ubuntu]: https://ubuntu.com/
 [k8s]: https://kubernetes.io "K8s Homepage"
+[kind-ingress]: https://kind.sigs.k8s.io/docs/user/ingress/#ingress-nginx
 [kind]: https://kind.sigs.k8s.io/ "KinD Homepage"
+[nginx-ingress]: https://kubernetes.github.io/ingress-nginx/
 [tekton]: https://tekton.dev "Tekton Homepage"
+[ubuntu]: https://ubuntu.com/
 [vagrant]: https://www.vagrantup.com/ "Vagrant Homepage"
 [vbguest]: https://github.com/dotless-de/vagrant-vbguest "vbguest github page"
 [virtbox]: https://www.virtualbox.org/ "Virtual Box Homepage"
