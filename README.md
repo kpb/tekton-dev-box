@@ -62,7 +62,7 @@ bar
 ### Tekton Dashboard
 
 The Tekton dashboard is installed, ingress configured, and port 8080 is forwarded to the box. You can access the
-dashboard at [localhost:8080](localhost:8080).
+dashboard at [localhost:8080](localhost:8080) from a browser on the host.
 
 ### What else is here?
 
