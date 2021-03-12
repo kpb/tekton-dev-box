@@ -2,6 +2,7 @@
 
 ## Status
 
+Updated. 11 March 2021
 Accepted. 20 February 2021
 
 ## Context
@@ -11,8 +12,8 @@ configuring a virtual machine.
 
 ## Decision
 
-Many of the provisioners are very powerful, and I/Kenneth gravitate towards Ansible, the project is straight forward
-enough to use the Shell. Keep it simple.
+The provisioners Vagrant supports are very powerful, and I/Kenneth gravitate towards Ansible. Currently, the project is
+straight forward enough to use the Shell. Keep it simple.
 
 ## Consequences
 

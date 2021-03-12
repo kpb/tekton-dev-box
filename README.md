@@ -26,11 +26,12 @@ $ cd tekton-dev-box
 
 ```bash
 $ vagrant up
-... can take a bit to download the box, configure K8s, and install Tekton (mine takes around 4.5 mins)
+... can take several minutes to download the box, configure K8s, and install Tekton
 ```
 3. Create and Run a [Tekton][tekton] Task
 
 ```bash
+$ vagrant ssh
 $ kubectl apply -f task-hello.yaml
 $ tkn task start hello && tkn taskrun logs --last -f
 ```
