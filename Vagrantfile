@@ -4,6 +4,7 @@
 Vagrant.configure("2") do |config|
 
   config.vm.box = "ubuntu/focal64"
+  config.vm.network "forwarded_port", guest: 80, host: 8080
 
   # vbguest plugin config
   if Vagrant.has_plugin?("vagrant-vbguest")
@@ -12,7 +13,9 @@ Vagrant.configure("2") do |config|
   end
   
   config.vm.provider "virtualbox" do |vb|
+    vb.name = "tekton-dev-box"
     vb.memory = "4096"
+    vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
   end
 
   # install docker
