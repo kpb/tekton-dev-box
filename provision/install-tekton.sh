@@ -30,3 +30,25 @@ $kubectl_cmd apply --filename https://github.com/tektoncd/dashboard/releases/lat
 
 echo "Waiting for Dashboard pods to be available"
 $kubectl_cmd wait --namespace tekton-pipelines --timeout=-30s --for=condition=Ready pods --all
+
+# Ingress for the dashboard
+cat <<EOF | $kubectl_cmd apply -f -
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tekton-dashboard-ingress
+  namespace: tekton-pipelines
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: tekton-dashboard
+              port:
+                number: 9097
+EOF
