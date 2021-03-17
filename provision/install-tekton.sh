@@ -13,7 +13,7 @@ echo "Waiting for tekton-pipelines pods to be available"
 $kubectl_cmd wait --namespace tekton-pipelines --timeout=-30s --for=condition=Ready pods --all
 
 # Install tekton cli
-curl -Lo tkn.tar.gz https://github.com/tektoncd/cli/releases/download/v0.16.0/tkn_0.16.0_Linux_x86_64.tar.gz
+curl -s -Lo tkn.tar.gz https://github.com/tektoncd/cli/releases/download/v0.16.0/tkn_0.16.0_Linux_x86_64.tar.gz
 tar zxvf tkn.tar.gz -C ./bin tkn
 rm tkn.tar.gz
 chmod 755 ./bin/tkn

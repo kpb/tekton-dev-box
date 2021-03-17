@@ -64,6 +64,35 @@ bar
 The Tekton dashboard is installed, ingress configured, and port 8080 is forwarded to the box. You can access the
 dashboard at [localhost:8080](localhost:8080) from a browser on the host.
 
+### Local Registry
+
+A local registry is created and the KinD cluster configured to use it. From the [KinD Local
+Registry][kind-local-registry] documentation, you can run an example like:
+
+```bash
+$ docker pull gcr.io/google-samples/hello-app:1.0
+1.0: Pulling from google-samples/hello-app
+b56ae66c2937: Pull complete 
+68cbeea01567: Pull complete 
+Digest: sha256:c62ead5b8c15c231f9e786250b07909daf6c266d0fcddd93fea882eb722c3be4
+Status: Downloaded newer image for gcr.io/google-samples/hello-app:1.0
+gcr.io/google-samples/hello-app:1.0
+
+$ docker tag gcr.io/google-samples/hello-app:1.0 localhost:5000/hello-app:1.0
+$ docker push localhost:5000/hello-app:1.0
+The push refers to repository [localhost:5000/hello-app]
+3b8ca1afdf65: Pushed 
+2aebd096e0e2: Pushed 
+1.0: digest: sha256:c62ead5b8c15c231f9e786250b07909daf6c266d0fcddd93fea882eb722c3be4 size: 739
+
+$ kubectl create deployment hello-server --image=localhost:5000/hello-app:1.0
+deployment.apps/hello-server created
+
+$ kubectl get pods -o wide
+NAME                            READY   STATUS    RESTARTS   AGE   IP           NODE                 NOMINATED NODE   READINESS GATES
+hello-server-64679d86dd-dvgnd   1/1     Running   0          14s   10.244.0.8   kind-control-plane   <none>           <none>
+```
+
 ### What else is here?
 
 The `adr` directory contains so-called [Architecture Decision Records][adr] documenting why the project is put together
@@ -77,6 +106,7 @@ Hope you find this useful! Peace.
 [adr]: https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions "adder's"
 [k8s]: https://kubernetes.io "K8s Homepage"
 [kind-ingress]: https://kind.sigs.k8s.io/docs/user/ingress/#ingress-nginx
+[kind-local-registry]: https://kind.sigs.k8s.io/docs/user/local-registry/
 [kind]: https://kind.sigs.k8s.io/ "KinD Homepage"
 [nginx-ingress]: https://kubernetes.github.io/ingress-nginx/
 [tekton]: https://tekton.dev "Tekton Homepage"
