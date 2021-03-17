@@ -106,6 +106,7 @@ Hope you find this useful! Peace.
 [adr]: https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions "adder's"
 [k8s]: https://kubernetes.io "K8s Homepage"
 [kind-ingress]: https://kind.sigs.k8s.io/docs/user/ingress/#ingress-nginx
+[kind-local-registry]: https://kind.sigs.k8s.io/docs/user/local-registry/
 [kind]: https://kind.sigs.k8s.io/ "KinD Homepage"
 [nginx-ingress]: https://kubernetes.github.io/ingress-nginx/
 [tekton]: https://tekton.dev "Tekton Homepage"
@@ -113,5 +114,3 @@ Hope you find this useful! Peace.
 [vagrant]: https://www.vagrantup.com/ "Vagrant Homepage"
 [vbguest]: https://github.com/dotless-de/vagrant-vbguest "vbguest github page"
 [virtbox]: https://www.virtualbox.org/ "Virtual Box Homepage"
-
-[kind-local-registry]: https://kind.sigs.k8s.io/docs/user/local-registry/
