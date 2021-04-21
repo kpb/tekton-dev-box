@@ -2,7 +2,6 @@
 #
 # See https://tekton.dev/docs/getting-started/ for details
 set -e
-set -x
 
 vagrant_bin=/home/vagrant/bin
 kubectl_cmd=${vagrant_bin}/kubectl
